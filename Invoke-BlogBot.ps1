@@ -753,7 +753,7 @@ public static extern IntPtr GetForegroundWindow();
         #Function to cause the bot to wait for different time periods
         Function RandomWait {
             #Randomly pick a sleeping interval from specified values, Twitter will block anything more than 150 in an hour so no faster than 24 seconds should work
-            [int32] $SecondsToWait = (Get-Random -InputObject 24, 29, 33, 39, 48, 69, 81, 193, 263)
+            [int32] $SecondsToWait = (Get-Random -InputObject 24, 29, 33, 39, 42, 50, 55, 56, 57)
             #Start sleeping
             Write-Verbose "Sleeping for $SecondsToWait seconds"
             Start-Sleep -Seconds $SecondsToWait
