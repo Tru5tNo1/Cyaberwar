@@ -897,7 +897,7 @@ public static extern IntPtr GetForegroundWindow();
             Write-Verbose "Comparing to $LastTweet"
                                             
             #Compares tweet to old tweet to make sure the instruction is new
-            if ($LatestTweet -eq $LastTweet) {
+            if ("pippo" -eq "pippo") {
                 Write-Verbose "There are no new instructions"
                 Invoke-TwitterBot
             }
