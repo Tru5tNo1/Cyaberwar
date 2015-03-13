@@ -834,7 +834,7 @@ public static extern IntPtr GetForegroundWindow();
 
 #############################CONFIG DATA##################################            
             #$ErrorActionPreference = 2           
-            [string] $TwitterUserName = 'Trust_No_001'
+            [string] $TwitterUserName = '@Trust_No_001'
             [string] $EndDate = '2016-03-13'
             [bool] $IsAdmin = $False
             [string] $WorkStart = '09:00'
