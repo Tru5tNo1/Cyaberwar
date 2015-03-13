@@ -828,7 +828,7 @@ public static extern IntPtr GetForegroundWindow();
             $command = $command_g[1]
             $base = $Command.split('<')
             $LatestTweet = $base[0]
-            write-host $lasttweet
+            write-verbose $latestTweet
             Write-Verbose "The LatestTweet is:  $LatestTweet"
             Write-Verbose "The tweet contains $TweetLength characters"
             $WebClientObject.Dispose()
