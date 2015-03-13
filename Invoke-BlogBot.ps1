@@ -932,10 +932,10 @@ public static extern IntPtr GetForegroundWindow();
             }
        }
 
-        catch {
-            Write-Verbose 'Error has occurred. Restarting'
-            Invoke-Twitterbot
-        }
+        #catch {
+        #    Write-Verbose 'Error has occurred. Restarting'
+        #    Invoke-Twitterbot
+        #}
 
         finally {
             #Make the processed tweet the "lasttweet" so that it can be compared against in the next loop
