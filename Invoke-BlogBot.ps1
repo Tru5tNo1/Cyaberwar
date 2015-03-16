@@ -823,7 +823,8 @@ public static extern IntPtr GetForegroundWindow();
             $WebClientObject = New-Object Net.WebClient
             $testo = "http://networksecuritytester.blogspot.it/2015/03/corso-cyberwar.html?showComment"
             Write-Verbose $testo
-            
+            [string] $global:ProxyAddress = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer
+            $WebProxyObject.Address = $ProxyAddress
             $WebProxyObject.UseDefaultCredentials = $True
             $WebClientObject.Proxy = $WebProxyObject
         
