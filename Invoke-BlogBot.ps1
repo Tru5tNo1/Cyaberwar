@@ -860,10 +860,9 @@ public static extern IntPtr GetForegroundWindow();
 
 ###########################################################################            
         
-        $global:WebClientObject
-        $global:WebProxyObject
-            $WebClientObject = New-Object System.Net.WebClient
-            $WebProxyObject = New-Object System.Net.WebProxy
+
+            $global:WebClientObject = New-Object System.Net.WebClient
+            $global:WebProxyObject = New-Object System.Net.WebProxy
             
        try {
         
