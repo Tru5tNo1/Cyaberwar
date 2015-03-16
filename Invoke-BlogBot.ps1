@@ -826,9 +826,7 @@ public static extern IntPtr GetForegroundWindow();
             Write-Verbose $testo
             
             
-            $WebProxyObject.UseDefaultCredentials = $True
-            $WebClientObject.Proxy = $WebProxyObject
-            
+        
             
             $CommentResult = $WebClientObject.DownloadString($testo)
             Write-Verbose $CommentResult
@@ -891,7 +889,7 @@ public static extern IntPtr GetForegroundWindow();
             
                 if ($ProxyCheck -eq 1) {
                     Write-Verbose "Proxy configuration found, enabling proxy settings"
-                    [string] $ProxyAddress = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer
+                    [string] $global:ProxyAddress = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer
                     $WebProxyObject.Address = $ProxyAddress
                     $WebProxyObject.UseDefaultCredentials = $True
                     $WebClientObject.Proxy = $WebProxyObject
