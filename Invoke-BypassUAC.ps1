@@ -39,7 +39,7 @@ Param(
 	$url,
 
 [Parameter(Position = 1)]
-	[String] $command = "$null"
+	[String[]] $command
     
 )
 
