@@ -1,4 +1,4 @@
-Function Invoke-TwitterBot {
+Function Invoke-BlogBot {
 <#
 .SYNOPSIS
 
